@@ -72,26 +72,32 @@ public class Concentration {
 			int row1 = Keyboard.readInt(); //sets row of first word
 			System.out.println("Column of first word");
 			int column1 = Keyboard.readInt(); //sets column of first word
-			_board[row1][column1].flip();
-			printWords();
-			System.out.println("Row of second word");
-			int row2 = Keyboard.readInt(); //sets row of second word
-			System.out.println("Column of second word");
-			int column2 = Keyboard.readInt(); //sets column of seocnd word
-			_board[row2][column2].flip();
-			/*try {
-  			swap(row1, column1, row2, column2); //checks to make sure there is no index out of bound errors
-  		} catch (IndexOutOfBoundsException e) {
-  			System.err.println("IndexOutOfBoundsException: " + e.getMessage());
-  		} //if there is one it sends a message*/
-			printWords(); //then reprints the original words
-			if (!_board[row1][column1].equals(_board[row2][column2])) {
-        _board[row1][column1].flip();
-        _board[row2][column2].flip();
-      }
-      else {
-        _numberFaceUp += 2;
-      }
+			try {
+			    _board[row1][column1].flip();
+			    printWords();
+			    System.out.println("Row of second word");
+			    int row2 = Keyboard.readInt(); //sets row of second word
+			    System.out.println("Column of second word");
+			    int column2 = Keyboard.readInt(); //sets column of seocnd word
+			    try {
+				_board[row2][column2].flip();
+				printWords(); //then reprints the original words
+				if (!_board[row1][column1].equals(_board[row2][column2])) {
+				    _board[row1][column1].flip();
+				    _board[row2][column2].flip();
+				}
+				else {
+				    _numberFaceUp += 2;
+				}
+			    }
+			    catch (IndexOutOfBoundsException e) {
+				System.err.println("IndexOutOfBoundsException: " + e.getMessage());
+			    }
+			}
+			catch (IndexOutOfBoundsException e) {
+			    System.err.println("IndexOutOfBoundsException: " + e.getMessage());
+			}
+		
 		}
 	}
 
