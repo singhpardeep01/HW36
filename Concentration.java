@@ -85,8 +85,13 @@ public class Concentration {
   			System.err.println("IndexOutOfBoundsException: " + e.getMessage());
   		} //if there is one it sends a message*/
 			printWords(); //then reprints the original words
-			_board[row1][column1]._isFaceUp = _board[row1][column1].equals(_board[row2][column2]);
-			_board[row2][column2]._isFaceUp = _board[row1][column1].equals(_board[row2][column2]);
+			if (!_board[row1][column1].equals(_board[row2][column2])) {
+        _board[row1][column1].flip();
+        _board[row2][column2].flip();
+      }
+      else {
+        _numberFaceUp++;
+      }
 		}
 	}
 
