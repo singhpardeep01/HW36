@@ -90,7 +90,7 @@ public class Concentration {
         _board[row2][column2].flip();
       }
       else {
-        _numberFaceUp++;
+        _numberFaceUp += 2;
       }
 		}
 	}
